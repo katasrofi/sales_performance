@@ -4,6 +4,7 @@ import pandas as pd
 import plotly.io as pio
 import seaborn as sns
 import os
+import numpy as np
 import warnings
 
 def PieBarChart(data: pd.DataFrame,
@@ -118,3 +119,71 @@ def LineChart(data: pd.DataFrame,
         plt.savefig(save_path)
 
     plt.show()
+
+
+
+def MlChart(model,
+            target,
+            prediction,
+            title,
+            X_train=None,
+            y_train=None,
+            ComparisonPlot=False,
+            ResidualPlot=False,
+            DistributionPlot=False,
+            LearningCurve=False):
+
+    from sklearn.pipeline import make_pipeline
+    # Data Prediction
+    y_pred = model.predict(prediction)
+
+    # Comparison between Actual value and Prediction
+    if ComparisonPlot:
+        plt.figure(figsize=(16, 6))
+        plt.scatter(target, y_pred)
+        plt.title(f'{title.__class__.__name__} Actual data Vs Prediction', fontsize=20)
+        plt.xlabel('Actual data', fontsize=16)
+        plt.ylabel('Prediction', fontsize=16)
+        plt.plot([target.min(), target.max()], [target.min(), target.max()], 'k--', lw=2)
+        plt.show()
+
+    # Residual plot
+    if ResidualPlot:
+        residu = target - y_pred
+        plt.figure(figsize=(16, 6))
+        plt.scatter(y_pred, residu)
+        plt.title('Residual plot', fontsize=20)
+        plt.xlabel('Prediction', fontsize=16)
+        plt.ylabel('Residual', fontsize=16)
+        plt.axhline(y=0, color='r', linestyle='--')
+        plt.show()
+
+    # Residual Distribution
+    if DistributionPlot:
+        plt.figure(figsize=(16, 6))
+        sns.histplot(residu, kde=True, legend=None)
+        plt.title('Residual Distributions', fontsize=20)
+        plt.xlabel('Residual', fontsize=16)
+        plt.ylabel('Frequency', fontsize=16)
+        plt.show()
+
+    # Learning Curve
+    if LearningCurve and X_train is not None and y_train is not None:
+        from sklearn.model_selection import learning_curve
+        train_sizes, train_scores, val_scores = learning_curve(
+            model, X_train, y_train, cv=5, scoring='r2',
+            train_sizes=np.linspace(0.1, 1.0, 10)
+            )
+
+        train_scores_mean = train_scores.mean(axis=1)
+        val_scores_mean = val_scores.mean(axis=1)
+
+        plt.figure(figsize=(16, 6))
+        plt.plot(train_sizes, train_scores_mean, 'o-', color='r', label='Training score')
+        plt.plot(train_sizes, val_scores_mean, 'o-', color='g', label='Validation score')
+        plt.title(f'{title.__class__.__name__} Learning Curve', fontsize=20)
+        plt.xlabel('Training Size', fontsize=16)
+        plt.ylabel('Score', fontsize=16)
+        plt.legend(loc='best')
+        plt.show()
+
