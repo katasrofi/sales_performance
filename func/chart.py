@@ -6,6 +6,7 @@ import seaborn as sns
 import os
 import numpy as np
 import warnings
+from scipy import stats
 
 def PieBarChart(data: pd.DataFrame,
              DateParameter,
@@ -136,6 +137,8 @@ def MlChart(model,
     from sklearn.pipeline import make_pipeline
     # Data Prediction
     y_pred = model.predict(prediction)
+    y_pred = y_pred.ravel()
+    target = target.ravel()
 
     # Comparison between Actual value and Prediction
     if ComparisonPlot:
@@ -149,14 +152,22 @@ def MlChart(model,
 
     # Residual plot
     if ResidualPlot:
-        residu = target - y_pred
-        plt.figure(figsize=(16, 6))
-        plt.scatter(y_pred, residu)
-        plt.title('Residual plot', fontsize=20)
-        plt.xlabel('Prediction', fontsize=16)
-        plt.ylabel('Residual', fontsize=16)
-        plt.axhline(y=0, color='r', linestyle='--')
-        plt.show()
+        if target.shape != y_pred.shape:
+            raise ValueError("Shapes of target and predictions do not match!")
+        else:
+            residu = target - y_pred
+            plt.figure(figsize=(16, 6))
+            plt.scatter(y_pred, residu)
+            plt.title('Residual plot', fontsize=20)
+            plt.xlabel('Prediction', fontsize=16)
+            plt.ylabel('Residual', fontsize=16)
+            plt.axhline(y=0, color='r', linestyle='--')
+            plt.show()
+
+            plt.figure(figsize=(16, 6))
+            stats.probplot(residu, dist='norm', plot=plt)
+            plt.title('Q-Q Plot of Residuals', fontsize=20)
+            plt.show()
 
     # Residual Distribution
     if DistributionPlot:
