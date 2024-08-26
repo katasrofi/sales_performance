@@ -45,9 +45,16 @@ As you can see, the data shows the sales history from February 2010 to October 2
 #### Factor
 ![Holiday](images/SalesInHoliday.png)
 
+During national holidays, the data shows that people tend to avoid going to Walmart because it is a day of rest. This situation can be improved by offering customers additional benefits such as discounts, buy 1 get 1 offers, coupons, vouchers, cashback, bundle deals, flash sales, free shipping, events, and special promotions.
 
 ![Temp](images/SalesInTemp.png)
+
+Temperature plays a significant role in people's behavior; they tend to avoid going out if the weather is uncomfortable. For this reason, stores should provide air conditioning to keep the area cool. In the sales chart, we can see that early winter shows higher sales because the temperature is more comfortable, and afterward, people begin preparing for the rest of the winter.
+
 ![CPI](images/WeeklyCPILine.png)
+
+CPI, or Consumer Price Index, shows the inflation rate of products. Although CPI tends to rise over time, this is not necessarily a bad thing, as consumer purchasing power can also increase. As shown in the chart below, unemployment has decreased over time.
+
 ![Unemployment](images/WeeklyUnemploymentLine.png)
 
 
