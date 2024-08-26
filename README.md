@@ -26,13 +26,29 @@ Walmart sales data is usually used for predicting and forecasting sales, optimiz
 ### Time
 The data from:
 
-2010: 5 February - 31 December, 330 days
-2011: 1 January -  31 December, 365 days
-2012: 1 january - 26 October, 294 days
+- 2010: 5 February - 31 December, 330 days
+- 2011: 1 January -  31 December, 365 days
+- 2012: 1 january - 26 October, 294 days
 
 
 ## Exploratory Data Analysis
 
 ### Year
 ![SalesByYears](images/SalesByYearsBar.png)
+
+### Month
+![Month_Sales](images/MonthSalesLineComparison.png)
+
+#### Factor
+![Holiday](images/SalesInHoliday.png)
+![Temp](images/SalesInTemp.png)
+![CPI](images/WeeklyCPILine.png)
+![Unemployment](images/WeeklyUnemploymentLine.png)
+
+
+
+
+### Weekly
+![Weekly_Sales](images/WeeklyWeekly_SalesLine.png)
+
 ## Analysis Approach
