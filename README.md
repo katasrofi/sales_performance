@@ -39,8 +39,13 @@ The data from:
 ### Month
 ![Month_Sales](images/MonthSalesLineComparison.png)
 
+
+As you can see, the data shows the sales history from February 2010 to October 2012. The sales performance indicates that 2011 had the highest sales over the three-year period. However 2011 covers a full year of 365 days, unlike 2010 and 2012. If we consider sales potential, 2012 seems more promising due to certain factors.
+
 #### Factor
 ![Holiday](images/SalesInHoliday.png)
+
+
 ![Temp](images/SalesInTemp.png)
 ![CPI](images/WeeklyCPILine.png)
 ![Unemployment](images/WeeklyUnemploymentLine.png)
