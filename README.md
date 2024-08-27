@@ -39,6 +39,9 @@ The data from:
 ### Month
 ![Month_Sales](images/MonthSalesLineComparison.png)
 
+### Weekly
+![Weekly_Sales](images/WeeklyWeekly_SalesLine.png)
+
 
 As you can see, the data shows the sales history from February 2010 to October 2012. The sales performance indicates that 2011 had the highest sales over the three-year period. However 2011 covers a full year of 365 days, unlike 2010 and 2012. If we consider sales potential, 2012 seems more promising due to certain factors.
 
@@ -59,8 +62,8 @@ CPI, or Consumer Price Index, shows the inflation rate of products. Although CPI
 
 
 
-
-### Weekly
-![Weekly_Sales](images/WeeklyWeekly_SalesLine.png)
-
 ## Analysis Approach
+
+Walmart data sales provide by walmart in kaggle websites, for preprocessing data for handle missing value and features engineering I am using pandas. For feature engineering use the lags features in seven days sales, and time based features.
+
+For machine learning, I am using XGBoost because reliability in forecasting, handling complex data, strong performance in time series data. I make three models XGBoost with different features to compare reliability and performance, the first model I am using TimeSeriesSplit from sklearn for split data by date, second model not using TimeSeriesSplit and using all the data, the third model not using lags features and TimeSeriesSplit to see how much the impact from features lags and split data by date.
