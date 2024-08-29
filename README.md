@@ -66,8 +66,34 @@ CPI, or Consumer Price Index, shows the inflation rate of products. Although CPI
 
 Walmart data sales provide by walmart in kaggle websites, for preprocessing data for handle missing value and features engineering I am using pandas. For feature engineering use the lags features in seven days sales, and time based features.
 
-For my machine learning tasks, I am using XGBoost because of its reliability in forecasting, ability to handle complex data, and strong performance with time series data. I created three XGBoost models with different feature sets to compare reliability and performance. The first model uses TimeSeriesSplit from scikit-learn to split the data by date. The second model does not use TimeSeriesSplit and includes all the data. The third model excludes both lag features and TimeSeriesSplit, but applies logarithmic transformation to the target variable to assess the impact of lag features and data splitting by date.
+For my machine learning tasks, I am using XGBoost because of its reliability in forecasting, ability to handle complex data, and strong performance with time series data. 
 
-For evaluation metrics, Root Mean Squared Error(RMSE) is suitable for forecasting models beside that, RMSE is easy to interpreted, the lower value, the better the models. And RMSE is also in same value in units, that will be big help for more understanding the error. RMSE also give insight how the data perform, because RMSE sensitive about outliears.
+For evaluation metrics, Root Mean Squared Error(RMSE) is suitable for forecasting models beside that, RMSE is easy to interpreted, the lower value, the better the models. RMSE also give insight how the data perform, because RMSE sensitive about outliears.
 
+### Feature Engineering
 
+| **Features**  | **Description**                                                                                     |
+|------------------|-----------------------------------------------------------------------------------------------------|
+| `Hour`           | Indicates the hour (0-23) of a specific time or date.                                                |
+| `DayOfWeek`      | Indicates the day of the week (0-6), where 0 is Monday and 6 is Sunday.                              |
+| `Week`           | Indicates the week number of the year (1-52 or 1-53, depending on the calendar).                     |
+| `Month`          | Indicates the month of the year (1-12).                                                              |
+| `Quarter`        | Indicates the quarter of the year (1-4), where 1 is January-March, and so on.                        |
+| `Year`           | Indicates the year of the data.                                                                      |
+| `DayOfYear`      | Indicates the day of the year (1-365 or 1-366 for leap years).                                        |
+| `Lags1`          | The first lag value, representing the data value from the previous period.                           |
+| `Lags2`          | The second lag value, representing the data value from two periods ago.                              |
+| `Lags3`          | The third lag value, representing the data value from three periods ago.                             |
+| `Diff`           | The difference between the current value and the previous value (difference).                        |
+| `RollingMean`    | The rolling mean or moving average, often used to smooth data or identify trends.                    |
+| `SinWeek`        | Sinusoidal representation of the week, used in seasonal analysis based on weekly periodicity.        |
+| `CosWeek`        | Cosine representation of the week, used in seasonal analysis based on weekly periodicity.            |
+
+### Result
+![future](images/future_predictions_Return.jpg)
+
+The Y-axis represents the return value, which is the percentage change calculated from weekly sales. The return value shows how much sales have increased or decreased on a percentage scale. The chart displays the growth and decline in sales projected for the next six months.
+
+## Conclusion
+
+The sales performance from walmart store is predicted kinda good in next six month. To ensure this predicted correct, the store need to keep customers loyalty with such as event, coupons, vouchers, cashback, bundle deals, special promotions, etc. For make sure customer happy by purchase in the store
