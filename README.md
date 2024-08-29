@@ -66,4 +66,8 @@ CPI, or Consumer Price Index, shows the inflation rate of products. Although CPI
 
 Walmart data sales provide by walmart in kaggle websites, for preprocessing data for handle missing value and features engineering I am using pandas. For feature engineering use the lags features in seven days sales, and time based features.
 
-For machine learning, I am using XGBoost because reliability in forecasting, handling complex data, strong performance in time series data. I make three models XGBoost with different features to compare reliability and performance, the first model I am using TimeSeriesSplit from sklearn for split data by date, second model not using TimeSeriesSplit and using all the data, the third model not using lags features and TimeSeriesSplit to see how much the impact from features lags and split data by date.
+For my machine learning tasks, I am using XGBoost because of its reliability in forecasting, ability to handle complex data, and strong performance with time series data. I created three XGBoost models with different feature sets to compare reliability and performance. The first model uses TimeSeriesSplit from scikit-learn to split the data by date. The second model does not use TimeSeriesSplit and includes all the data. The third model excludes both lag features and TimeSeriesSplit, but applies logarithmic transformation to the target variable to assess the impact of lag features and data splitting by date.
+
+For evaluation metrics, Root Mean Squared Error(RMSE) is suitable for forecasting models beside that, RMSE is easy to interpreted, the lower value, the better the models. And RMSE is also in same value in units, that will be big help for more understanding the error. RMSE also give insight how the data perform, because RMSE sensitive about outliears.
+
+
